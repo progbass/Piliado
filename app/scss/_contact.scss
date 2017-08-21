@@ -1,0 +1,141 @@
+section#contact{
+	padding-top: 0; padding-bottom: 0;
+	
+	.parallax_container{
+		.circle:nth-child(1){
+			top: 100px;
+			right: 15%;
+		}
+		.circle:nth-child(2){
+			top: 345px;
+			left: 5%;
+		}
+		.circle:nth-child(3){
+			top: 90px;
+			left: -10%;
+			z-index: -1;
+			transform: scale(5)
+		}
+
+		.rect:nth-child(4){
+			top: 240px;
+			right: 10%;
+		}
+		.rect:nth-child(5){
+			top: -200px;
+			right: 5%;
+		}
+	}
+
+
+	/*========================
+	SECTION DISPLAY
+	========================*/
+	.header{
+		width: 100%;
+		display: flex;
+		flex-flow: row wrap;
+		justify-content: space-between;
+	}
+	.section_display{
+		@extend %SectionDisplay;
+		margin-left: auto;
+		width: auto;
+
+		&:after{
+			content: '';
+			position: absolute;
+			display: block;
+			bottom: 5px; right: -20%;
+			width: 10px;
+			height: 120%;
+			background: $color_main;
+		}
+	}
+
+
+
+	/*========================
+	CONTACT HOLDER
+	========================*/
+	.contact_holder{
+		position: relative;
+		display: flex;
+		flex-flow: row wrap;
+		justify-content: space-around;
+	}
+
+
+	.map{
+		position: relative;
+		margin: 0 auto;
+		@include responsive-container(60%);
+		width: 100%;
+		order: 0;
+
+		.map_container{
+			position: absolute;
+			width: 100%;height: 100%;
+			top: 0; left: 50%;
+			transform: translateX(-50%);
+		}
+	}
+
+
+	.info{
+		width: 100%;
+		padding: 0 1.125rem;
+
+		a{
+			color: $color_main;
+			text-decoration: none;
+		}
+	}
+
+	
+
+
+
+	/*-----------------------------
+	// MEDIA QUERIES
+	----------------------------*/
+	@media screen and (min-width: $bp_mobileBig){
+		.section_display{
+			top: -1em; right: 4em;
+		}
+	}
+
+	@media screen and (min-width: $bp_tablet){
+		text-align: center;
+		text-align: left;
+
+
+		.section_display{
+			position: absolute;
+			top: 3em; right: 5%;
+		}
+
+
+
+		.map,
+		.info{
+			width: 50%;
+			margin: 0; padding: 0;
+		}
+
+		.info{
+			order: 1;
+			align-self: flex-end;
+			padding: 0 2.5vw;
+
+			h2{
+				text-align: left;
+				margin-bottom: .2em;
+			}
+			p{
+				margin-bottom: 0;
+			}
+		}
+	}
+
+}

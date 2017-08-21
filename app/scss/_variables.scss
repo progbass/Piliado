@@ -1,0 +1,112 @@
+$color_main: #2a61ac;
+$color_shades: #e5e5e5;
+$images_path: '../img/';
+$fonts_path: '../fonts/';
+$margin-mobile-sides:  1.25rem;
+$max-width: 1200px;
+
+$bp_mobileBig: 728px;
+$bp_tablet: 1024px;
+$bp_desktop: 1100px;
+
+@import "../../node_modules/typeplate-starter-kit/scss/typeplate-vars";
+$typl8-custom-font: true;
+$typl8-scale: (
+  typl8-tera: 77,
+  typl8-giga: 64,
+  typl8-mega: 54,
+  typl8-alpha: 45,
+  typl8-beta: 37,
+  typl8-gamma: 31,
+  typl8-delta: 26,
+  typl8-epsilon: 22,
+  typl8-zeta: 18,
+);
+
+
+@mixin responsive_container($ratio: 0){
+	&:before{
+		content: '';
+		display: block;
+		position: relative;
+		width: 100%;
+		padding-bottom: $ratio;
+	}
+}
+
+
+
+@mixin hide-text(){
+	font:0/0 a;	
+}
+
+
+
+@mixin center-content($top: -50%, $left: -50%){
+	top: 50%; left: 50%;
+	transform: translate($top, $left);
+}
+
+
+
+@function pow($number, $exp) {
+  $value: 1;
+  @if $exp > 0 {
+    @for $i from 1 through $exp {
+      $value: $value * $number;
+    }
+  }
+  @else if $exp < 0 {
+    @for $i from 1 through -$exp {
+      $value: $value / $number;
+    }
+  }
+  @return $value;
+}
+@function fact($number) {
+  $value: 1;
+  @if $number > 0 {
+    @for $i from 1 through $number {
+      $value: $value * $i;
+    }
+  }
+  @return $value;
+}
+@function pi() {
+  @return 3.14159265359;
+}
+
+@function rad($angle) {
+  $unit: unit($angle);
+  $unitless: $angle / ($angle * 0 + 1);
+  // If the angle has 'deg' as unit, convert to radians.
+  @if $unit == deg {
+    $unitless: $unitless / 180 * pi();
+  }
+  @return $unitless;
+}
+
+@function sin($angle) {
+  $sin: 0;
+  $angle: rad($angle);
+  // Iterate a bunch of times.
+  @for $i from 0 through 10 {
+    $sin: $sin + pow(-1, $i) * pow($angle, (2 * $i + 1)) / fact(2 * $i + 1);
+  }
+  @return $sin;
+}
+
+@function cos($angle) {
+  $cos: 0;
+  $angle: rad($angle);
+  // Iterate a bunch of times.
+  @for $i from 0 through 10 {
+    $cos: $cos + pow(-1, $i) * pow($angle, 2 * $i) / fact(2 * $i);
+  }
+  @return $cos;
+}
+
+@function tan($angle) {
+  @return sin($angle) / cos($angle);
+}
+

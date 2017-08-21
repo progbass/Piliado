@@ -1,0 +1,171 @@
+section#team{
+
+	.parallax_container{
+		.circle:nth-child(1){
+			top: 100px;
+			right: 15%;
+		}
+		.circle:nth-child(2){
+			top: 345px;
+			left: 5%;
+			transform: scale(.7)
+		}
+
+		.rect:nth-child(3){
+			top: -60px;
+			left: 5%;
+
+			transform: scale(2);
+		}
+		.rect:nth-child(4){
+			top: 0px;
+			right: 5%;
+		}
+		.rect:nth-child(5){
+			top: 900px;
+			left: 10%;
+
+			transform: scale(2);
+		}
+	}
+
+
+	.grid_wrapper{
+		@media screen and (min-width: $bp_desktop){
+			max-width: 600px;
+			text-align: center;
+		}
+	}
+
+
+	/*========================
+	SECTION DISPLAY
+	========================*/
+	h2{
+		width: 100%
+	}
+	.header{
+		display: flex;
+		flex-flow: row wrap;
+		justify-content: space-between;
+		align-items: center;
+
+		position: relative;
+		width: 100%;
+		text-align: center;
+	}
+	
+	.section_display{
+		@extend %SectionDisplay;
+	}
+
+
+
+	/*========================
+	IMAGES HOLDER
+	========================*/
+	.image_holder{
+		position: relative;
+		display: flex;
+  		flex-flow: row wrap;
+  		justify-content: space-around;
+		
+		.member{
+			position: relative;
+			margin-bottom: 1.5em;
+			text-align: center;
+
+			h4{
+				display: inline-block;
+				color: #fff;
+				background: $color_main;
+				padding: .5em .5em .25em;
+				position: absolute;
+				min-width: 180px;
+				left: 50%; transform: translateX(-50%);
+				bottom: 1em;
+				margin: 0 auto;
+				@extend .typl8-epsilon;
+			}
+		}
+
+
+		img{
+			width: 100%;
+			height: auto;
+		}
+
+
+		@media screen and (min-width: 500px){
+			width: 120%;
+			margin: 0 -10%;
+
+			.member{
+				width: 50%;
+				margin: 0;
+
+				h4{
+					font-size: 1em;
+				}
+			}
+		}
+		@media screen and (min-width: $bp_mobileBig){
+			width: 100%;
+			margin: 0 auto;
+
+			.member{
+				width: calc(50%);
+				margin: 0;
+
+				&:first-child{
+					//top: 1em;
+					h4{ bottom: 1.75em; left: 20%; }
+				}
+				&:last-child{
+					h4{ bottom: 1.75em; right: -30%; left: auto; }
+				}
+			}
+		}
+
+		@media screen and (min-width: $bp_desktop){
+			width: 120%;
+			margin: 0 -10%;
+		}
+	}
+
+
+
+
+	/*-----------------------------
+	// MEDIA QUERIES
+	----------------------------*/
+	@media screen and (min-width: $bp_mobileBig){
+		h2{
+			//display: inline-block;
+			//width: auto;
+			//text-align: left;
+			margin: 0 auto;
+			order: 1;
+		}
+
+		.header{
+			margin-bottom: 1em;
+		}
+
+		.section_display{
+			left: 50%;
+			transform: translateX( calc(-50% - 165px));
+			margin-bottom: 1em;
+
+			&:after{
+				content: '';
+				position: absolute;
+				display: block;
+				bottom: 7px; right: -60%;
+				width: 45%;
+				height: 7px;
+				background: $color_main;
+			}
+		}
+	}
+}

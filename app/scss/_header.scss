@@ -1,0 +1,366 @@
+
+
+@keyframes scroll{
+  100%{
+    background-position: 0px -100vh;
+  }
+}
+
+#menu{
+	display: flex;
+	position: relative;
+	flex-flow: column nowrap;
+	justify-content: center;
+
+	position: fixed;
+	z-index: 10;
+	width: 100%;
+	height: 0%;
+	overflow: hidden;
+	transition: all 600ms ease 1000ms;
+
+	text-align: center;
+	color: #fff;
+
+	
+
+	$animation-in: cubic-bezier(1,0,0,1.5);
+	$animation-out: ease-in;
+	$timing-in: 320ms;
+	$timing-out: 200ms;
+
+
+	&.visible{
+		height: 100%;
+		transition: height 80ms ease;
+
+		.close{
+			opacity: 1;
+			transition: opacity 200ms ease 100ms;
+		}
+
+		.background{
+
+			> div{
+				background-color: $color_main;
+			    transform: perspective(350px) rotateX(0deg);
+			    -webkit-transform: perspective(350px) rotateX(0deg);
+			    transition: all $timing-in #{$animation-in} 0ms;
+
+				&:nth-child(2){
+				    transition-delay: $timing-in;
+				}
+				&:nth-child(3){
+				    transition-delay: ($timing-in * 2);
+				}
+				&:nth-child(4){
+				    transition-delay: ($timing-in * 3)
+				}
+			}
+		}
+
+		ul{
+			opacity: 1;
+			margin-top: 0;
+			transition: all 400ms ease;
+			transition-delay: 1200ms;
+		}
+	}
+
+
+	.background{
+		position: absolute; 
+		top: 0; left: 0;
+		width: 100%; height: 100%;
+
+		> div{
+			display: block;
+			backface-visibility: hidden;
+			-webkit-backface-visibility: hidden;
+			transform: rotateX(-90deg);
+			-webkit-transform: rotateX(-90deg);
+			transform-origin: 50% 0;
+			-webkit-transform-origin: 50% 0;
+			transition: all $timing-out #{$animation-out} #{$timing-out * 3};
+			width: 100%; height: 25%;
+			background: darken($color_main, 15%);
+
+			&:nth-of-type(2){
+			    transition-delay: ($timing-out * 2);
+			}
+			&:nth-of-type(3){
+			    transition-delay: ($timing-out * 1);
+			}
+			&:nth-of-type(4){
+			    transition-delay: 0ms
+			}
+		}
+	}
+
+	
+
+	.close{
+		opacity: 0;
+		transition: opacity 200ms ease;
+		position: absolute;
+		top: 1.25em; right: 1.25em;
+		width: 5vw; height: 5vw;
+		min-width: 30px; min-height: 30px;
+		max-width: 45px; max-height: 45px;
+		cursor: pointer;
+
+		&:before,
+		&:after{
+			content: '';
+			display: block;
+			position: absolute;
+			width: 100%;
+			height: 8px;
+			background: darken($color_main, 20%);
+			transform-origin: center;
+			transition: background 200ms;
+			top: 50%; left: 0;
+		}
+		&:before{
+			transform: translate(0%, -50%) rotate(45deg)
+		}
+		&:after{
+			transform: translate(0%, -50%) rotate(-45deg)
+		}
+
+		&:hover{
+			&:before,
+			&:after{
+				background: #FFF;
+			}
+		}
+	}
+
+
+	a{
+		color: #fff;
+		text-decoration: none;
+	}
+	
+	ul{
+		list-style: none;
+		margin: 20px auto 0; padding: 0;
+		opacity: 0;
+		transition: all 200ms ease;
+		transition-delay: 100ms;
+		z-index: 100;
+
+		li{
+			font-family: 'Biko';
+			font-weight: bold;
+			@include typl8-typescale(
+				32,
+				$typl8-font-base,
+		        $typl8-typescale-unit,
+		        $typl8-measure
+		    );
+			padding: 0px .75em;
+			margin: 0 auto;
+
+			a{
+				display: inline-block;
+				//width: 100%;
+				height: 100%;
+				transition: all .2s ease;
+
+				&:hover{
+					transform: scale(1.2)
+				}
+			}
+		}
+
+		@media screen and (min-width: $bp_desktop){
+			li{
+				@include typl8-typescale(
+					37,
+					$typl8-font-base,
+			        $typl8-typescale-unit,
+			        $typl8-measure
+			    );
+				padding: 0px 1em;
+			}
+		}
+	}
+}
+
+header{
+	position: relative;
+	height: 100vh;
+	color: #fff;
+	background: $color_main;
+
+
+	&:before{
+		content: '';
+		display: block;
+		position: absolute;
+		width: 100%; height:100%;
+		top:0; left:0;
+		background: url($images_path+'header_texture.svg')repeat center bottom;
+		background-size: 400px;
+		opacity: .2;
+
+		animation: 100s scroll infinite linear;
+	}
+
+
+	a{
+		color: #fff;
+		text-decoration: none;
+	}
+
+	/*-----------------------------
+	// MEDIA QUERIES
+	----------------------------*/
+	@media screen and (min-width: $bp_mobileBig){
+		height: 60vh;
+		background: url($images_path+'header_bg.jpg') no-repeat right center;
+		background-size: cover;
+
+		&:before{
+			display: none;
+		}
+	}
+	@media screen and (min-width: $bp_desktop){
+		min-height: 350px;
+	}
+
+
+
+
+
+	/*------------------------
+	LOGO MENU
+	------------------------*/
+	.logo{
+		display: none;
+		position: absolute;
+		top: 30px; right: 0;
+		width: 15%;
+		max-width: 90px;
+		background: url($images_path+'logo_piliado_menu.svg') no-repeat;
+		background-size: contain;
+
+		@include hide-text();
+		@include responsive_container(100%);
+
+		/*-----------------------------
+		// MEDIA QUERIES
+		----------------------------*/
+		@media screen and (min-width: $bp_mobileBig){
+			display: block;
+		}
+	}
+
+
+
+	/*------------------------
+	IMAGE WRAPPER
+	------------------------*/
+	.image_wrapper{
+		position: absolute;
+		width: 55%;
+		max-width: 180px;
+		@include center-content();
+		
+		img{
+			width: 100%;
+			height: auto;
+		}
+
+		@media screen and (min-width: $bp_mobileBig){
+			max-width: 230px;
+		}
+	}
+
+
+
+	/*------------------------
+	MAIN MENU
+	------------------------*/
+	#main_menu{
+		position: fixed;
+		display: none;
+		width: 100%;
+		left: 0%; top: 0;//-120px;
+		z-index: 2;
+		opacity: 1;
+
+		&:before{
+			content: '';
+			position: absolute;
+			display: none;
+			top: 0; left: 0;
+			width: 100%;
+			height: 80px;
+			background: linear-gradient(to bottom, rgba(255,255,255,1) 0%, rgba(255,255,255,.6) 60%,rgba(255,255,255,0) 100%); 
+		}
+
+		&.hide{
+			display: none;
+		}
+		&.show{
+			top: 0;
+		}
+
+		&.blue{
+			.icon{
+				background: $color_main#fff;
+				svg{
+					path{
+						fill: #fff;
+					}
+				}
+			}
+		}
+		&.white{
+			.icon{
+				background: #fff;
+				svg{
+					path{
+						fill: $color_main;
+					}
+				}
+			}
+		}
+
+		.icon{
+			cursor: pointer;
+			display: block;
+			position: absolute;
+			width: 10vw;
+			min-width: 42px;
+			max-width: 50px;
+			transition: background .4s ease;
+			text-align: right;
+			background: $color_main;
+			padding: .875rem .25rem;
+			top: 0; right: 0; 
+
+			.icon_holder{
+				position: relative;
+				margin: 0 auto;
+				width: 70%;
+				top: 0;
+
+				@include hide-text();
+				@include responsive_container(70%);
+			}
+
+			svg{
+				position: absolute;
+				top: 50%; left: 50%;
+				transform: translate(-50%, -50%);
+
+				path{
+					transition: fill .4s ease;
+				}
+			}
+		}
+	}
+}

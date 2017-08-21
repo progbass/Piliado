@@ -1,0 +1,503 @@
+
+
+section#about{
+	overflow: hidden;
+
+	@media screen and (min-width: $bp_desktop){
+		padding-top: 2em;
+		padding-bottom: 3em;
+	}
+
+	.parallax_container{
+
+		.circle:nth-child(1){
+			top: 560px;
+			right: -5%;
+
+			transform: scale(6);
+		}
+		.circle:nth-child(2){
+			top: 1480px;
+			right: 8%;
+		}
+		.rect:nth-child(3){
+			top: 140px;
+			left: 3%;
+		}
+		.rect:nth-child(4){
+			top: 2000px;
+			left: 6%;
+
+			transform: scale(5);
+		}
+		.rect:nth-child(5){
+			background: #fff;
+			top: 540px;
+			right: 3%;
+			z-index: 1;
+		}
+		.rect:nth-child(6){
+			background: #fff;
+			top: 675px;
+			right: 44%;
+			z-index: 1;
+		}
+		.rect:nth-child(7){
+			background: #fff;
+			top: 1050px;
+			right: 13%;
+			z-index: 1;
+
+			transform: scale(3.5);
+		}
+		.rect:nth-child(8){
+			top: 1050px;
+			left: 5%;
+		}
+		.rect:nth-child(9){
+			top: 1070px;
+			left: 2%;
+		}
+		.rect:nth-child(10){
+			top: 1100px;
+			right: 5%;
+		}
+	}
+
+
+
+
+	/*========================
+	ARTICLE
+	========================*/
+	article{
+		position: relative;
+		margin-bottom: 5em;
+
+		&:last-child{
+			margin-bottom: 0;
+		}
+	}
+
+
+	/*========================
+	SECTION TITLE
+	========================*/
+	h2{
+		text-align: center;
+		//flex-direction: column;
+		//flex-basis: 100%;
+	}
+
+
+
+	/*========================
+	SOMOS
+	========================*/
+	article.somos{
+		display: flex;
+		flex-flow: row wrap;
+		justify-content: space-around;
+
+		h2{
+			width: 100%;
+		}
+
+		/*-----------------------------
+		// SECTION DISPLAY
+		----------------------------*/
+		.header{
+			width: 100%;
+			display: flex;
+			flex-flow: row wrap;
+			justify-content: space-between;
+			align-items: center;
+			text-align: center;
+		}
+		.section_display{
+			@extend %SectionDisplay;
+
+			&:after{
+				content: '';
+				position: absolute;
+				display: block;
+				bottom: 5px; right: -20%;
+				width: 10px;
+				height: 120%;
+				background: $color_main;
+			}
+		}
+
+		
+		/*-----------------------------
+		// MEDIA QUERIES
+		----------------------------*/
+		@media screen and (min-width: $bp_mobileBig){
+			h2{
+				display: inline-block;
+				margin-bottom: 0;
+				text-align: left;
+				width: auto;
+			}
+
+			.header{
+				margin-bottom: 1.5em;
+			}
+		}
+
+		@media screen and (min-width: $bp_tablet){
+
+			/*---- LAYOUT ----*/
+			.col_left{
+				width: 50%;
+				padding-right: 1.5em;
+			};
+			.col_right{
+				width: 50%;
+				padding-left: 1.5em;
+			};
+		}
+	}
+
+
+
+	/*========================
+	BACKGROUND
+	========================*/
+	article.background{
+		height: 55vh;
+		min-height: 250px;
+		max-height: 380px;
+		color: #fff;
+		
+		position: relative;
+		display: block;
+		flex-flow: row nowrap;
+		justify-content: space-between;
+
+		.image_holder{
+			position: relative;
+			width: 100%; height: 100%;
+			background: $color_main url($images_path+'about_bg.jpg') no-repeat center;
+			background-size: cover;
+		}
+
+
+		.quote{
+			position: absolute;
+			width: 100%;
+			@include center-content();
+			margin: 0 auto;
+
+			h3, h4{
+				margin: 0 auto;
+				width: 75%;
+				color: #fff;
+				font-weight: normal;
+			}
+			h3{
+				font-size: 1.75em;
+				margin-bottom: .2em;
+			}
+			h4{
+				margin-bottom: 0;
+				font-size: 1.25em;
+				line-height: 1.2;
+				//@extend .typl8-epsilon;
+			}
+		}
+
+
+
+		/*-----------------------------
+		// MEDIA QUERIES
+		----------------------------*/
+		@media screen and (min-width: $bp_mobileBig){
+			.quote{
+				max-width: none;
+				width: 95%;
+			}
+		}
+		@media screen and (min-width: $bp_tablet){
+			background: url($images_path+'about_tile.gif') repeat 15px top;
+			background-size: 450px;
+
+			.image_holder{
+				width: 50%;
+				margin-left: auto
+			}
+		}
+	}
+
+
+
+	/*========================
+	PENSAMIENTO
+	========================*/
+	article.pensamiento{
+		/*-----------------------------
+		// SECTION DISPLAY
+		----------------------------*/
+		h2{
+			width: 100%;
+		}
+		.header{
+			width: 100%;
+			display: flex;
+			flex-flow: row wrap;
+			justify-content: space-between;
+			align-items: center;
+			text-align: center;
+		}
+		.section_display{
+			@extend %SectionDisplay;
+		}
+
+		@media screen and (min-width: $bp_mobileBig){
+			.section_display{
+				position: absolute !important;
+				top: -.75em; left: -1em;
+			}
+		}
+		@media screen and (min-width: $bp_tablet){
+			max-width: 600px;
+
+			.section_display{
+				left: -25%;
+			}
+		}
+		@media screen and (min-width: $bp_desktop){
+			text-align: center;
+		}
+	}
+
+
+
+
+	/*========================
+	METODOLOGÍA
+	========================*/
+	article.metodologia{
+		display: flex;
+		flex-flow: row wrap;
+		justify-content: space-around;
+
+		h3{
+			position: relative;
+			z-index: 1;
+			background: $color_main;
+			padding: .5em .5em .25em;
+			margin: 0 auto 2em;
+			color: #FFF;
+			display: inline-block;
+			@extend .typl8-gamma;
+		}
+
+		ul{
+			position: relative;
+			width: 100%;
+			margin: -4.75em auto 0;
+			padding: 3.5em 1.5em 2em;
+			border: solid 1px $color_shades;
+			background: #fafafa;
+			list-style: none;
+
+			display: flex;
+			flex-flow: row wrap;
+			justify-content: space-around;
+
+			li{
+				position: relative;
+				margin: 0 0 2.5em; padding: 0 0 2em;
+				border-bottom: solid 1px $color_shades;
+
+				&:last-child{
+					margin-bottom: 0;
+					padding-bottom: 0;
+					border: none;
+				}
+
+				.flip_holder{
+					height: 100%;
+					transition: 0.5s;
+					transform-style: preserve-3d;
+					position: relative;
+				}
+
+				.front{
+					display: none;
+				}
+
+				h4{
+					margin: 0 auto .75em;
+					@extend .typl8-epsilon;
+				}
+
+				p{
+					margin: 0; padding: 0;
+				}
+			}
+		}
+
+
+		@media screen and (min-width: 520px){
+			max-width: none;
+			width: 95%;
+
+			ul{
+
+				li{
+					border-right: solid 1em transparent;
+					border-left: solid 1em transparent;
+					width: 50%;
+				}
+			}
+		}
+
+		@media screen and (min-width: $bp_tablet){
+			text-align: center;
+
+			ul{
+				padding: 0 0;
+				border: none;
+				background: transparent;
+
+				li{
+					width: calc(33.333% - 10px);
+					margin: 5px !important;
+					padding: 0 !important;
+					border: none;
+
+					.back, .front{
+						width: 100%; height: 100%;
+						padding: 2.5em 1.75em 2em;
+
+						border: solid 1px $color_shades !important;
+						background: #fff !important;
+					}
+
+					&:nth-child(4),
+					&:last-child{
+						width: calc(50% - 10px);
+					}
+				}
+			}
+		}
+
+
+		@media screen and (min-width: $bp_desktop){
+			width: 100%;
+			padding: 0 10px;
+
+			.col_left{
+				display: block;
+				width: 34.7777%;
+				border-right: solid 5px transparent;
+
+				background: url($images_path+'about_methodology.jpg') no-repeat center;
+				background-size: cover;
+
+				h3{
+					position: relative;
+					top: 50%;
+					transform: translateY(-50%)
+				}
+			}
+			.col_right{
+				display: block;
+				width: 65.2223%;
+
+				ul{
+					margin: -5px auto;
+
+					li{
+						perspective: 1000px;
+						min-height: 275px;
+
+						&:nth-child(4), &:nth-child(5){
+							min-height: 200px;
+						}
+
+						&:hover .flip_holder{
+							transform: rotateX(180deg);
+						}
+
+						.flip_holder{
+							position: absolute;
+							width: 100%; height: 100%;
+						}
+
+						.front, .back {
+							backface-visibility: hidden;
+							-webkit-backface-visibility: hidden;
+							width: 100%; height: 100%;
+							position: absolute;
+							top: 0;
+							left: 0;
+						}
+
+						.front {
+							display: block;
+							z-index: -1;
+							transform: rotateX(0deg);
+
+							&:after{
+								content: '+';
+								display: block;
+								position: absolute;
+								bottom: 17px;
+								right: 7px;
+								margin: 0 auto 0;
+								width: 15px; height: 15px;
+
+								color: #dadada;
+								font-size: 1.125em;
+								font-weight: normal;
+								font-family: 'Baskerville';
+								text-align: center;
+							}
+
+							h4{
+								position: absolute;
+								font-weight: normal;
+								font-size: 1.125em;
+								min-width: 200px;
+								margin-bottom: 0;
+								@include center-content();
+
+								span{
+									text-align: center;
+									display: block;
+									margin: 0 auto 10px;
+									font-size: 2.5em;
+									font-weight: bold;
+									/* max-width: 25px;
+									padding: .4em .25em .3em;
+									background: $color_main; */
+									color: $color_main;
+								}
+							}
+						}
+						.back {
+							display: block;
+							z-index: 10;
+							transform: rotateX(180deg);
+							background: $color_main !important;
+							color: #fff;
+
+							p{
+								font-size: .875em;
+							}
+
+							h4{
+								color: #fff;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+

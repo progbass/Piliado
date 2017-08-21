@@ -1,0 +1,140 @@
+
+@import 'variables';
+@import 'fonts';
+@import 'reset';
+@import 'boilerplate';
+
+@import "../../node_modules/typeplate-starter-kit/scss/typeplate-index";
+
+@import 'header';
+@import 'about';
+@import 'services';
+@import 'clients';
+@import 'team';
+@import 'contact';
+@import 'footer';
+
+* {
+	box-sizing: border-box
+}
+::selection{
+	background: #EB2227;
+	text-shadow: none;
+	color: #fff;
+}
+html{
+	background: #fff
+}
+
+body{
+	font-family: 'Baskerville';
+	font-weight: normal;
+	//font-size: 100%;
+	color: #515151;
+	-webkit-hyphens: none;
+	-moz-hyphens: none;
+	-ms-hyphens: none;
+	hyphens: none;
+}
+
+
+
+
+h1, h2, h3, h4{
+	font-family: 'Biko';
+	font-weight: bold;
+	//text-transform: uppercase;
+}
+
+
+
+section{
+	position: relative;
+	padding: 6rem 0;
+	margin: 0 auto;
+	text-align: center;
+
+	h2{
+		text-align: center;
+		color: $color_main;
+	}
+
+	@media screen and (min-width: $bp_tablet){
+		text-align: left;
+	}
+	@media screen and (min-width: $bp_desktop){
+		h2{
+			@include typl8-typescale(
+		        54,
+		        $typl8-font-base,
+		        $typl8-typescale-unit,
+		        $typl8-measure
+	    	);
+		}
+	}
+}
+
+
+%SectionDisplay{
+	display: none;
+	position: relative;
+	text-align: right;
+
+	span{
+		display: block;
+		color: darken($color_shades, 20%);
+		padding-top: 0;
+		border-top: solid 2px $color_main;
+		font-size: .825em;
+	}
+
+	@media screen and (min-width: $bp_mobileBig){
+		display: block;
+	}
+}
+
+.grid_wrapper{
+	margin: 0 auto;
+	width: 100%;
+	max-width: 25em;
+	padding: 0 $margin-mobile-sides;
+
+	@media screen and (min-width: $bp_mobileBig){
+		max-width: none;
+		width: 82.5%;
+	}
+	@media screen and (min-width: $bp_tablet){
+		padding: 0;
+		max-width: 1024px;
+	}
+	@media screen and (min-width: $bp_tablet){
+		padding: 10vh 0;
+	}
+}
+
+
+.parallax_container{
+	display: none;
+	position: absolute;
+	top: 0; left: 0; right: 0;
+	margin: auto;
+	width: 100%; height: 100%;
+	max-width: $max-width;
+
+	.rect{
+		position: absolute;
+		width: 20px;
+		height: 90px;
+		background: #f5f5f5;
+	}
+	.circle{
+		position: absolute;
+		border: solid 15px #f5f5f5;
+		border-radius: 50%;
+		width: 90px; height: 90px;
+	}
+
+	@media screen and (min-width: $bp_desktop){
+		display: block;
+	}
+}
