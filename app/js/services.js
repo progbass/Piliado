@@ -38,11 +38,11 @@ let Services = function(){
 					// Close al services
 					this.services.forEach( function(_target){
 						if(element !== _target)
-							_target.querySelector('.info').classList.toggle('active', false)
+							_target.classList.toggle('active', false)
 					});
 					
 					// Show/Hide current service
-					const infoContainer = element.querySelector('.info');
+					const infoContainer = element;
 					infoContainer.classList.toggle('active');
 
 					// Position Scroll
